@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Read_Email_Sequence" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1052,1317.6" sap2010:WorkflowViewState.IdRef="Read_Email_Sequence_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Read_Email_Sequence" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1052,1750.4" sap2010:WorkflowViewState.IdRef="Read_Email_Sequence_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -36,6 +36,7 @@
       <x:String>UiPath.Shared.Activities.Business</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -72,19 +73,15 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Read_Email_Sequence" sap:VirtualizedContainerService.HintSize="1062.4,1252.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description:&#xA;    - This workflow logs into an email account and downloads attachments from unread messages with a specific subject line to a local folder, creating this folder if it doesn't exist&#xA;&#xA;Pre-conditions:&#xA;    - A user has entered their email credentials&#xA;&#xA;Post-actions:&#xA;    - Downloads email attachment to a local ' Data ' folder" DisplayName="Read_Email_Sequence" sap:VirtualizedContainerService.HintSize="1062.4,1685.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="pwd" />
       <Variable x:TypeArguments="x:String" Default="gnosistest247@gmail.com" Name="email" />
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailMessages" />
-      <Variable x:TypeArguments="x:String" Name="dataFolder">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">C:\Users\jrpete\Documents\UiPath\Invoice_Scraping_Sequence\Data</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="C:\Users\jrpete\Documents\UiPath\Invoice_Scraping_Sequence\Data" Name="dataFolder" />
       <Variable x:TypeArguments="x:Boolean" Name="folderBool" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -93,32 +90,58 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetPassword DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="1020.8,22.4" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAV856f7LhiE+k7I3Gh30t9AAAAAACAAAAAAAQZgAAAAEAACAAAAAK3Fso00rXS3Jxhw/1DIxARzyPmAG5bC/JdHBPg4wCUQAAAAAOgAAAAAIAACAAAADqRYVncbIkUCVu/lLe/OcDAfji1hfR8qNsXUEd+XwTeCAAAAC+OlsAqSV+LqQczX77DmmbDybMuEfn5cIe3Br+XgL0DUAAAAC+zTRBeQghP5XMQkmeL04d/RRhvKfByBRH9SdftW6Xls4/HA5CQssOdJ9qzE9WVOMYSDN6BaImZPjihiRNzp9I" Result="[pwd]" />
-    <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="[email]" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="1020.8,22.4" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[mailMessages]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Password="[pwd]" Port="993" SecureConnection="Auto" Server="imap.gmail.com" Top="30" />
-    <ui:FolderExistsX DisplayName="Folder Exists" Exists="[folderBool]" sap:VirtualizedContainerService.HintSize="1020.8,134.4" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[dataFolder]" />
-    <If Condition="[folderBool = True]" sap:VirtualizedContainerService.HintSize="1020.8,829.6" sap2010:WorkflowViewState.IdRef="If_2">
-      <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="601.6,670.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <TryCatch DisplayName="Try_Read_Email" sap:VirtualizedContainerService.HintSize="1020.8,408.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Read_Email_Sequence" sap:VirtualizedContainerService.HintSize="241.6,177.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="560,577.6" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[mailMessages]">
+          <ui:GetPassword DisplayName="Get_Email_Password" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAV856f7LhiE+k7I3Gh30t9AAAAAACAAAAAAAQZgAAAAEAACAAAAAK3Fso00rXS3Jxhw/1DIxARzyPmAG5bC/JdHBPg4wCUQAAAAAOgAAAAAIAACAAAADqRYVncbIkUCVu/lLe/OcDAfji1hfR8qNsXUEd+XwTeCAAAAC+OlsAqSV+LqQczX77DmmbDybMuEfn5cIe3Br+XgL0DUAAAAC+zTRBeQghP5XMQkmeL04d/RRhvKfByBRH9SdftW6Xls4/HA5CQssOdJ9qzE9WVOMYSDN6BaImZPjihiRNzp9I" Result="[pwd]" />
+          <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get_IMAP_Mail_Messages" Email="[email]" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[mailMessages]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Password="[pwd]" Port="993" SecureConnection="Auto" Server="imap.gmail.com" Top="30" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="um:MailException" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="um:MailException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="um:MailException" Name="exception" />
+            </ActivityAction.Argument>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:FolderExistsX DisplayName="Check_Folder_Exists" Exists="[folderBool]" sap:VirtualizedContainerService.HintSize="1020.8,134.4" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[dataFolder]" />
+    <If Condition="[folderBool = True]" DisplayName="If_Folder_Exists_Sequence" sap:VirtualizedContainerService.HintSize="1020.8,829.6" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence DisplayName="Extract_Email_Sequence" sap:VirtualizedContainerService.HintSize="601.6,670.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For_Each_Email_In_Inbox" sap:VirtualizedContainerService.HintSize="560,577.6" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[mailMessages]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="snm:MailMessage">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="message" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,452.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Extract_Attachment" sap:VirtualizedContainerService.HintSize="524.8,452.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[message.Subject.ToString = &quot;Techno Computers&quot;]" sap:VirtualizedContainerService.HintSize="483.2,360" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If Condition="[message.Subject.ToString = &quot;Techno Computers&quot;]" DisplayName="If_Email_Subject_Line" sap:VirtualizedContainerService.HintSize="483.2,360" sap2010:WorkflowViewState.IdRef="If_1">
                     <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <Sequence DisplayName="Save_Attachment_Sequence" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -144,7 +167,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="375.2,173.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence DisplayName="Create_Foler_Sequence" sap:VirtualizedContainerService.HintSize="375.2,173.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
