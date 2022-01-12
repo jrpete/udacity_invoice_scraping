@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>893.6,1284.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1140,1500</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Upload_Orchestrator_Excel_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -65,7 +65,7 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description:&#xD;&#xA;This workflow performs the following actions:&#xD;&#xA;    1). Creates a dictionary to store invoice subtotal information&#xD;&#xA;    2). Add the Subtotal, GST %, and Total information to the Dictionary&#xD;&#xA;    3). Tries to upload this items in the dictionary to an existing UiPath Orchestrator   Queue&#xD;&#xA;&#xD;&#xA;Pre-conditions:&#xD;&#xA;    - An array of the subtotal information from all invoices has been passed to the Sequence&#xD;&#xA;&#xD;&#xA;Post-actions:&#xD;&#xA;    - Uploads subotal information to an existing UiPath Orchestrator Queue as individual transactions" DisplayName="Upload_Orchestrator_Excel_Sequence" sap:VirtualizedContainerService.HintSize="475.2,1220" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description:&#xA;This workflow performs the following actions:&#xA;    1). Creates a dictionary to store invoice subtotal information&#xA;    2). Add the Subtotal, GST %, and Total information to the Dictionary&#xA;    3). Tries to upload this items in the dictionary to an existing UiPath Orchestrator   Queue&#xA;&#xA;Pre-conditions:&#xA;    - An array of the subtotal information from all invoices has been passed to the Sequence&#xA;&#xA;Post-actions:&#xA;    - Uploads subotal information to an existing UiPath Orchestrator Queue as individual transactions" DisplayName="Upload_Orchestrator_Excel_Sequence" sap:VirtualizedContainerService.HintSize="478.4,1435.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="subTotalDict" />
     </Sequence.Variables>
@@ -75,36 +75,61 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign_Invoice_Subtotals" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap2010:Annotation.AnnotationText="Creates a new dictionary to story Invoice Subtotal, GST, and Total information" DisplayName="Assign_Invoice_Subtotals" sap:VirtualizedContainerService.HintSize="436.8,104" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[SubTotalDict]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[new Dictionary(Of string, object)]</InArgument>
       </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <InvokeMethod DisplayName="Invoke_Add_Subtotal" sap:VirtualizedContainerService.HintSize="433.6,133.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Add">
+    <InvokeMethod sap2010:Annotation.AnnotationText="Add invoice subtotal data to dictionary" DisplayName="Invoke_Add_Subtotal" sap:VirtualizedContainerService.HintSize="436.8,177.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Add">
       <InvokeMethod.TargetObject>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[SubTotalDict]</InArgument>
       </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <InArgument x:TypeArguments="x:String">Sub Total</InArgument>
       <InArgument x:TypeArguments="x:Object">[in_SubTotalDetailsArray(0)]</InArgument>
     </InvokeMethod>
-    <InvokeMethod DisplayName="Invoke_Add_GST" sap:VirtualizedContainerService.HintSize="433.6,133.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Add">
+    <InvokeMethod sap2010:Annotation.AnnotationText="Add invoice GST data to dictionary" DisplayName="Invoke_Add_GST" sap:VirtualizedContainerService.HintSize="436.8,164.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Add">
       <InvokeMethod.TargetObject>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[SubTotalDict]</InArgument>
       </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <InArgument x:TypeArguments="x:String">GST Percent</InArgument>
       <InArgument x:TypeArguments="x:Object">[in_SubTotalDetailsArray(1)]</InArgument>
     </InvokeMethod>
-    <InvokeMethod DisplayName="Invole_Add_Total" sap:VirtualizedContainerService.HintSize="433.6,133.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Add">
+    <InvokeMethod sap2010:Annotation.AnnotationText="Add invoice Total data to dictionary" DisplayName="Invole_Add_Total" sap:VirtualizedContainerService.HintSize="436.8,164.8" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Add">
       <InvokeMethod.TargetObject>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[SubTotalDict]</InArgument>
       </InvokeMethod.TargetObject>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <InArgument x:TypeArguments="x:String">Total</InArgument>
       <InArgument x:TypeArguments="x:Object">[in_SubTotalDetailsArray(2)]</InArgument>
     </InvokeMethod>
-    <TryCatch DisplayName="Try_Orchestrator_Queue_Upload" sap:VirtualizedContainerService.HintSize="433.6,270.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch sap2010:Annotation.AnnotationText="" DisplayName="Try_Orchestrator_Queue_Upload" sap:VirtualizedContainerService.HintSize="436.8,335.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
         <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add_Item_To_Queue" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" ItemInformationCollection="[SubTotalDict]" Priority="Normal" QueueType="Invoice_Queue">
           <ui:AddQueueItem.ItemInformation>
@@ -113,10 +138,10 @@
         </ui:AddQueueItem>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="ui:OrchestratorHttpException" sap:VirtualizedContainerService.HintSize="400,105.6" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="ui:OrchestratorHttpException" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>

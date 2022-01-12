@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>893.6,690.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1140,985.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Email_Excel_Sequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -73,7 +73,6 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
@@ -84,15 +83,21 @@
       <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Email_Excel_Sequence" sap:VirtualizedContainerService.HintSize="478.4,625.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description:&#xA;    This workflow performs the following actions::&#xA;        1). Logs into an email account&#xA;        2). Sends an email to an account with a custom subject line and the email  excel spreadsheet with scraped invoice data as an attachment&#xA;&#xA;Pre-conditions:&#xA;    - Receives a list of files to be emailed&#xA;&#xA;Post-actions:&#xD;&#xA;    - Sends scraped invoice data to email with customer subject line and scraped excel files as an attachment" DisplayName="Email_Excel_Sequence" sap:VirtualizedContainerService.HintSize="478.4,920.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="436.8,532.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch sap2010:Annotation.AnnotationText="Tries logging into an email account and sending a message" DisplayName="Try_Send_Email" sap:VirtualizedContainerService.HintSize="436.8,624" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="375.2,301.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Send_SMTP_Sequence" sap:VirtualizedContainerService.HintSize="375.2,361.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Default="gnosistest247@gmail.com" Name="email" />
             <Variable x:TypeArguments="x:String" Name="pwd" />
@@ -100,15 +105,14 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:GetPassword DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAV856f7LhiE+k7I3Gh30t9AAAAAACAAAAAAAQZgAAAAEAACAAAAAK3Fso00rXS3Jxhw/1DIxARzyPmAG5bC/JdHBPg4wCUQAAAAAOgAAAAAIAACAAAADqRYVncbIkUCVu/lLe/OcDAfji1hfR8qNsXUEd+XwTeCAAAAC+OlsAqSV+LqQczX77DmmbDybMuEfn5cIe3Br+XgL0DUAAAAC+zTRBeQghP5XMQkmeL04d/RRhvKfByBRH9SdftW6Xls4/HA5CQssOdJ9qzE9WVOMYSDN6BaImZPjihiRNzp9I" Result="[pwd]" />
-          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="Please see the attached file" DisplayName="Send SMTP Mail Message" Email="[email]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="[pwd]" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="[in_Subject]" To="[email]">
+          <ui:GetPassword DisplayName="Get_Email_Password" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAV856f7LhiE+k7I3Gh30t9AAAAAACAAAAAAAQZgAAAAEAACAAAAAK3Fso00rXS3Jxhw/1DIxARzyPmAG5bC/JdHBPg4wCUQAAAAAOgAAAAAIAACAAAADqRYVncbIkUCVu/lLe/OcDAfji1hfR8qNsXUEd+XwTeCAAAAC+OlsAqSV+LqQczX77DmmbDybMuEfn5cIe3Br+XgL0DUAAAAC+zTRBeQghP5XMQkmeL04d/RRhvKfByBRH9SdftW6Xls4/HA5CQssOdJ9qzE9WVOMYSDN6BaImZPjihiRNzp9I" Result="[pwd]" />
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="Please see the attached file" DisplayName="Send_SMTP_Mail_Message" Email="[email]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="[pwd]" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="[in_Subject]" To="[email]">
             <ui:SendMail.Files>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                <InArgument x:TypeArguments="x:String">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Attachment" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String">[in_Attachment]</InArgument>
               </scg:List>
             </ui:SendMail.Files>
           </ui:SendMail>
