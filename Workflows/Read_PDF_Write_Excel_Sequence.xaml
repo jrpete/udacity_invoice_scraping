@@ -1,0 +1,318 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Write_Sequence" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_pdfFiles" Type="InArgument(x:String)" />
+    <x:Property Name="out_InvoiceTable" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1220.8,3370.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Write_Sequence_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Core.Activities.TextModifications</x:String>
+      <x:String>UiPath.Activities.System.Workflow.Business</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>Microsoft.Office.Interop.Excel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>Microsoft.Office.Interop.Excel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Description:&#xA;This workflow performs the following actions:&#xA;1) Iterates through invoice files in a local folder&#xA;2). Scrapes the invoice number and customer names from each invoice&#xA;3). Calls a workflow to scrape the invoice item details, passing the invoice files as an argument&#xA;4). Calls a workflow to upload invoice details to UiPath Orchestrator Queue, passing invoice sub totals as an argument&#xA;5). Writes the scraped invoice data to an Excel file&#xA;6). Calls a workflow to Email an Excel file with the scraped invoice data to an email account&#xA;&#xA;Pre-conditions:&#xA;    - A list of PDF files has been passed to the Sequence&#xA;&#xA;Post-actions:&#xA;    - Scrapes data from PDF invoices and writes it to an Excel file&#xA;    - Uploads scraped data to a UiPath Orchestrator Queue&#xA;    - Sends an email with the scraped invoice data as an attached Excel spreadsheet" DisplayName="Write_Message_Sequence" sap:VirtualizedContainerService.HintSize="1231.2,3305.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:WorkbookApplication" Name="workbook" />
+      <Variable x:TypeArguments="x:String" Name="invoiceNum" />
+      <Variable x:TypeArguments="x:String" Name="customerName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch sap2010:Annotation.AnnotationText="Tries to read in a series of files and pass them to a workflow to scrape their contents, call workflow to pass the invoice sub total information to UiPath orchestrator, then writes the scraped data to an Excel file." DisplayName="Try_Catch_Read_Files" sap:VirtualizedContainerService.HintSize="1189.6,2944.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence DisplayName="Try_Read_Files_Sequence" sap:VirtualizedContainerService.HintSize="1152.8,2682.4" sap2010:WorkflowViewState.IdRef="Sequence_24">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ForEachFileX sap2010:Annotation.AnnotationText="Iterate through each file" DisplayName="For_Each_File" Filter="*.pdf" Folder="C:\Users\jrpete\Documents\UiPath\Invoice_Scraping_Sequence\Data" sap:VirtualizedContainerService.HintSize="1111.2,2589.6" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst">
+            <ui:ForEachFileX.Body>
+              <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
+                <ActivityAction.Argument1>
+                  <DelegateInArgument x:TypeArguments="si:FileInfo" Name="file" />
+                </ActivityAction.Argument1>
+                <ActivityAction.Argument2>
+                  <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+                </ActivityAction.Argument2>
+                <Sequence DisplayName="Write_Invoice_Sequence" sap:VirtualizedContainerService.HintSize="1077.6,2324" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="Read_Invoice_Sequence" sap:VirtualizedContainerService.HintSize="1036,1915.2" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="sd:DataTable" Name="excelDataTable" />
+                      <Variable x:TypeArguments="s:String[]" Name="subTotalsDetails" />
+                      <Variable x:TypeArguments="x:Boolean" Name="folderBool" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Sequence sap2010:Annotation.AnnotationText="Open the invoice and read the invoice number and customer name from the file name" DisplayName="Read_Invoice_Header_Sequence" sap:VirtualizedContainerService.HintSize="994.4,424.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:StartProcess Arguments="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open_Invoice" FileName="[file.ToString]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
+                      <Assign DisplayName="Assign_Invoice_Num" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[invoiceNum]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[file.ToString.Split("_".ToCharArray).Last.ToString.split("."c)(0)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Assign_Customer_Name" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[customerName]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[file.ToString.Split("\".ToCharArray).Last.ToString.split("_"c)(0)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoke workflow to scrape invoice item details" DisplayName="Invoke_Scrape_PDF_Workflow" sap:VirtualizedContainerService.HintSize="994.4,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\Scrape_PDF_Sequence.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_pdfFiles">[file.ToString]</InArgument>
+                        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_FinalInvoiceDetailsDataTable">[excelDataTable]</OutArgument>
+                        <OutArgument x:TypeArguments="s:String[]" x:Key="out_SubTotalDetailsArray">[subTotalsDetails]</OutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InvokeWorkflowFile>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoke workflow to upload invoice Sub Total information to UiPath Orchestrator" DisplayName="Invoke_Orchestrator_Upload_Workflow" sap:VirtualizedContainerService.HintSize="994.4,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\Upload_Orchestrator_Excel_Sequence.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="s:String[]" x:Key="in_SubTotalDetailsArray">[subTotalsDetails]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InvokeWorkflowFile>
+                    <ui:FolderExistsX sap2010:Annotation.AnnotationText="Checks if the 'Excel_Files' folder already exists" DisplayName="Folder Exists" Exists="[folderBool]" sap:VirtualizedContainerService.HintSize="994.4,165.6" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="Excel_Files">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:FolderExistsX>
+                    <If sap2010:Annotation.AnnotationText="If the folder already exists, write the Excel files to it. If not, create it then write the Excel files to it. " Condition="[folderBool = True]" sap:VirtualizedContainerService.HintSize="994.4,769.6" sap2010:WorkflowViewState.IdRef="If_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="475.2,427.2" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Write scraped invoice data to Excel file using customer name and invoice number as the file name" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,334.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" Visible="False" Workbook="[workbook]" WorkbookPath="[&quot;Excel_Files\&quot; + customerName + &quot;_&quot; + invoiceNum + &quot;.xlsx&quot;]">
+                            <ui:ExcelApplicationScope.Body>
+                              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Write_Excel_Sequence" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:ExcelWriteRange AddHeaders="False" DataTable="[excelDataTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_5" SheetName="Sheet1" StartingCell="A1" />
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:ExcelApplicationScope.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ExcelApplicationScope>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="475.2,579.2" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:CreateDirectory ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="433.6,112" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="Excel_Files">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:CreateDirectory>
+                          <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Write scraped invoice data to Excel file using customer name and invoice number as the file name" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,334.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" Visible="False" Workbook="[workbook]" WorkbookPath="[&quot;Excel_Files\&quot; + customerName + &quot;_&quot; + invoiceNum + &quot;.xlsx&quot;]">
+                            <ui:ExcelApplicationScope.Body>
+                              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Write_Excel_Sequence" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:ExcelWriteRange AddHeaders="False" DataTable="[excelDataTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_6" SheetName="Sheet1" StartingCell="A1" />
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:ExcelApplicationScope.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ExcelApplicationScope>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                  <ui:ExcelCloseWorkbook sap2010:Annotation.AnnotationText="Close the workbook" DisplayName="Close Workbook" sap:VirtualizedContainerService.HintSize="1036,91.2" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_1" Workbook="[workbook]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ExcelCloseWorkbook>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Invoke_Email_Excel_Sequence" sap:VirtualizedContainerService.HintSize="1036,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Email_Excel_Sequence.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[string.Format("Course 2 Automation: " + customerName + "_" + invoiceNum + " details uploaded to queue")]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_Attachment">["Excel_Files\" + customerName + "_" + invoiceNum + ".xlsx"]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:InvokeWorkflowFile>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachFileX.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachFileX>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="si:DirectoryNotFoundException" sap:VirtualizedContainerService.HintSize="1156,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="si:DirectoryNotFoundException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="si:DirectoryNotFoundException" Name="exception" />
+            </ActivityAction.Argument>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
