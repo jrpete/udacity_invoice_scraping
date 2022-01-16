@@ -2,7 +2,7 @@
 
 This process downloads invoices from an email inbox, scrapes the invoice for the date, number, transaction details, Sub-total, GST %, and Total, then stories it into an Excel file. The invoice Sub-total, GST %, and Total data are then uploaded to a UiPath Orchestrator Queue and the Excel file is sent as an email attachment. 
 
-###Installation
+### Installation
 
 Clone the GitHub repositroy then use UiPath to run the "Main.xml" file. Remove any existing files from the 'Data' and 'Excel_Files' directories before running. 
 
@@ -12,7 +12,7 @@ cd Invoice_Scraping_Sequence
 ./Main.xml
 ```
 
-###Usage
+### Usage
 
 This project was run using UiPath Studio 2021.10.3 on a Windows 10 Home 64-bit 5.0.11 machine.
 
