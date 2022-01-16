@@ -1,42 +1,40 @@
-Program a Robot that will “Read the last unread emails” from your mail.
+# Scraping Invoice Files Using UiPath
 
-Program a Robot that will download all the attachments with a naming convention of CustomerName_InvoiceDate_InvoiceNumber.pdf file from the mail with the subject line Techno Computers.
+This process downloads invoices from an email inbox, scrapes the invoice for the date, number, transaction details, Sub-total, GST %, and Total, then stories it into an Excel file. The invoice Sub-total, GST %, and Total data are then uploaded to a UiPath Orchestrator Queue and the Excel file is sent as an email attachment. 
 
-Program a Robot to save the attachment files in the data folder which has already been created or create it in the Project directory.
+###Installation
 
-Regex
-[a-zA-Z]+_\d{8}_\d+.pdf
+Clone the GitHub repositroy then use UiPath to run the "Main.xml" file. Remove any existing files from the 'Data' and 'Excel_Files' directories before running. 
 
-Program a Robot that will “extract the relevant fields from the document”:
+```
+git clone https://github.com/jrpete/udacity_invoice_scraping
+cd Invoice_Scraping_Sequence
+./Main.xml
+```
 
-InvoiceNo			pdfArray(17)
-InvoiceDate			pdfArray(18)
+###Usage
 
-Order Information   starts at 21
-	ItemNo	
-			pdfArray(counter).Split(" "c)(0)
-	Description
-			pdfArray(counter).Substring(3,pdfArray(counter).Length-colLength)
-	Quantity
-			pdfArray(counter).Split(" "c)(pdfArray(counter).Split(" "c).Length-3)
-	Price
-			pdfArray(counter).Split(" "c)(pdfArray(counter).Split(" "c).Length-2)	
-	SubTotal
-			pdfArray(pdfArray.Length-3)
-	GST
-			pdfArray(pdfArray.Length-2)
-	Total
-			pdfArray(pdfArray.Length-1)
+This project was run using UiPath Studio 2021.10.3 on a Windows 10 Home 64-bit 5.0.11 machine.
+
+This project uses the following Dependencies: 
+
+- UiPath.Excel.Activities v2.11.4
+- UiPath.Mail.Activities v1.12.2
+- UiPath.PDF.Activities v3.4.1
+- UiPath.System.Activities v21.10.2
+- UiPath.UIAutomation.Activities v21.10.3
 
 
-Program a Robot to save the all Order Information details into an excel sheet and save the excel sheet as “CustomerName_InvoiceNumber.xlsx”
+### License
 
-Program the bot to upload the following Order Information details to the Orchestrator Queue:
-SubTotal
-GST
-Total
-Program the bot to email the excel file as an attachment to yourself with the subject line as “Course 2 Automation: CustomerName_InvoiceNumber details uploaded to queue”.
-Repeat Step 4-7 for the remaining invoices.
-Program the robot to successfully end if all the attachments downloaded from the mail in Step 2 are processed.
-Fill out the Process Definition Document based on the Process Definition Document Overview & Instructions below.
-Create a recording of a walkthrough of your automation following the Video Walkthrough Guidelines listed below.
+This project is licensed under the [MIT License](./LICENSE.md) @ Udacity
+
+
+### Issues/Bugs
+
+- To report an issue or bug, create a Pull Request and document the issue. 
+
+
+### Contribution
+
+- Jesse Peterson
